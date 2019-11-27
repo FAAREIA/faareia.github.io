@@ -9,6 +9,20 @@ const cacheCleaning = () => {
 		.catch(error => console.log(error));
 }
 
+const cacheLookup = e => {
+	return caches.match(e.request).then(response => {
+      console.log('[Service Worker] Fetching resource: '+e.request.url);
+      return response || fetch(e.request).then(function(response) {
+        return caches.open(cacheId).then(function(cache) {
+          console.log('[Service Worker] Caching new resource: '+e.request.url);
+          cache.put(e.request, response.clone());
+		  console.log(response);
+          return response;
+        });
+      });
+    })
+}
+
 const cacheOpenAdd = (id, files) => {
 	return caches.open(id)
 		.then(cache => cache.addAll(files))
@@ -19,7 +33,7 @@ const cacheOpenAdd = (id, files) => {
 
 // Variables
 const appName = "faareia";
-const cacheVersion = 'v0.5';
+const cacheVersion = 'v0.6';
 const cacheFiles = [
 	'/app.js?v=1.1',
 	'/css.css?v.1.1',
@@ -35,19 +49,4 @@ const cacheId = `${appName} - ${cacheVersion}`;
 // Events
 self.addEventListener('install', e => e.waitUntil(cacheOpenAdd(cacheId, cacheFiles)));
 self.addEventListener('activate', e => e.waitUntil(cacheCleaning()));
-
-// Fetching content using Service Worker
-self.addEventListener('fetch', function(e) {
-  e.respondWith(
-    caches.match(e.request).then(function(r) {
-      console.log('[Service Worker] Fetching resource: '+e.request.url);
-      return r || fetch(e.request).then(function(response) {
-        return caches.open(cacheId).then(function(cache) {
-          console.log('[Service Worker] Caching new resource: '+e.request.url);
-          cache.put(e.request, response.clone());
-          return response;
-        });
-      });
-    })
-  );
-});
+self.addEventListener('fetch', e => e.respondWith(cacheLookup(e)));
