@@ -14,7 +14,8 @@ const cacheLookup = e => {
 		.then(response => {
 			return response || fetch(e.request)
 				.catch(error => {
-					return caches.match('/offline.html');
+					if (e.request.mode === 'navigate') return caches.match('/offline.html');
+					console.log(error);
 				});
 		})
 		.catch(error => console.log(error));
