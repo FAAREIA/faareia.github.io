@@ -51,8 +51,7 @@
 	"lang"						:	"es",
 	"name"						:	"ABC Mundial",
 	"serviceworker"				:	{
-		"src"					: "/sw.js",
-		"update_via_cache"		: "none"
+		"src"					: "/sw.js"
 	},
 	"short_name"				:	"ABC",
 	"start_url"					:	"/?pwa=1",
