@@ -10,18 +10,9 @@ const cacheCleaning = () => {
 }
 
 const cacheLookup = e => {
-	console.log(e);
-	return caches.match(e.request).then(response => {
-      console.log('[Service Worker] Fetching resource: '+e.request.url);
-      return response || fetch(e.request).then(function(response) {
-        return caches.open(cacheId).then(function(cache) {
-          console.log('[Service Worker] Caching new resource: '+e.request.url);
-          cache.put(e.request, response.clone());
-		  console.log(response);
-          return response;
-        });
-      });
-    })
+	return caches.match(e.request)
+		.then(response => response)
+		.catch(error => console.log(error));
 }
 
 const cacheOpenAdd = (id, files) => {
