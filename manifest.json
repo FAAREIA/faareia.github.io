@@ -9,13 +9,13 @@
 	"icons"						:	[
 		{
 			"sizes"				: "48x48 72x72 96x96 128x128 256x256 512x512",
-			"src"				: "icon/abc.svg"
+			"src"				: "icon.svg"
 		}
 	],
 	"lang"						:	"es",
 	"name"						:	"ABC Mundial",
 	"serviceworker"				:	{
-		"src"					: "./serviceworker.js",
+		"src"					: "/sw.js",
 		"update_via_cache"		: "none"
 	},
 	"short_name"				:	"ABC",
