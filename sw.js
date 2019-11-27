@@ -10,6 +10,7 @@ const cacheCleaning = () => {
 }
 
 const cacheLookup = e => {
+	console.log(e);
 	return caches.match(e.request)
 		.then(response => response)
 		.catch(error => console.log(error));
