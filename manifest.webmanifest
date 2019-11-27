@@ -60,5 +60,5 @@
 	},
 	"short_name"				:	"ABC",
 	"start_url"					:	"/?pwa=1",
-	"theme_color"				:	"#221E2B"
+	"theme_color"				:	"#FF0000"
 }
