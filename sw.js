@@ -1,4 +1,4 @@
-//Functions
+// Functions
 const cacheCleaning = () => {
 	return caches.keys()
 		.then(keyList => {
