@@ -10,10 +10,13 @@ const cacheCleaning = () => {
 }
 
 const cacheLookup = e => {
-	console.log(e);
-	console.log(e.request);
 	return caches.match(e.request)
-		.then(response => response)
+		.then(response => {
+			return response || fetch(e.request)
+				.catch(error => {
+					return caches.match('/offline.html');
+				});
+		})
 		.catch(error => console.log(error));
 }
 
@@ -32,6 +35,7 @@ const cacheFiles = [
 	'/app.js?v=1.1',
 	'/css.css?v.1.1',
 	'/manifest.webmanifest?v1.1',
+	'/offline.html',
 	'/a.jpg',
 	'/c.jpg',
 	'/d.jpg'
