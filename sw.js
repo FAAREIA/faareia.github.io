@@ -23,7 +23,7 @@ const cacheVersion = 'v0.5';
 const cacheFiles = [
 	'/app.js?v=1.1',
 	'/css.css?v.1.1',
-	'/manifest.json?v1.1',
+	'/manifest.webmanifest?v1.1',
 	'/a.jpg',
 	'/c.jpg',
 	'/d.jpg'
