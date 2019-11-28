@@ -18,6 +18,7 @@ const cacheFileLookup = e => {
 				console.log(error);
 				if (e.request.mode === 'navigate') return caches.match('/offline.html');
 			})
+		)
 		.catch(error => console.log(error));
 }
 
