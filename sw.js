@@ -15,8 +15,6 @@ const cacheFileLookup = e => {
 			if (response) return response;
 			return fetch(e.request)
 				.catch(error => {
-					console.log(1);
-					console.log(error);
 					if (e.request.mode === 'navigate') return caches.match('/offline.html');
 					else if (e.request.mode === 'no-cors' && e.request.url.slice(-4) === '.ico') return caches.match('/favicon.png');
 				})
