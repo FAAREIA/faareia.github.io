@@ -14,10 +14,6 @@ const cacheFileLookup = e => {
 		.then(response => {
 			if (response) return response;
 			return fetch(e.request)
-				.then(response => {
-					console.log(22222);
-					console.log(response);
-				})
 				.catch(error => {
 					console.log(1);
 					console.log(error);
