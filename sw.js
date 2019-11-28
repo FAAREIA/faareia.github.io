@@ -10,9 +10,14 @@ const cacheCleaning = () => {
 }
 
 const cacheFileLookup = e => {
-	console.log(e);
 	return caches.match(e.request)
-		.then(response => response || fetch(e.request).catch(error => console.log(error)))
+		.then(response => response || fetch(e.request)
+			.catch(error => {
+				console.log(e.request);
+				console.log('111111111111111111111111111111111');
+				console.log(error);
+				if (e.request.mode === 'navigate') return caches.match('/offline.html');
+			})
 		.catch(error => console.log(error));
 }
 
@@ -43,8 +48,8 @@ const cacheId = `${appName} - ${cacheVersion}`;
 // Events
 self.addEventListener('install', e => e.waitUntil(cacheOpenAdd(cacheId, cacheFiles)));
 self.addEventListener('activate', e => e.waitUntil(cacheCleaning()));
+self.addEventListener('fetch', e => e.respondWith(cacheFileLookup(e)));
 if (navigator.onLine === true) {
-	self.addEventListener('fetch', e => e.respondWith(cacheFileLookup(e)));
 } else {
-	caches.match('/offline.html');
+
 }
