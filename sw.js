@@ -16,8 +16,10 @@ const cacheFileLookup = e => {
 			return fetch(e.request)
 				.then(response => console.log(response))
 				.catch(error => {
+					console.log(1);
+					console.log(error);
 					if (e.request.mode === 'navigate') return caches.match('/offline.html');
-					else if (e.request.mode === 'no-cors' && '.ico') return caches.match('/favicon.png');
+					else if (e.request.mode === 'no-cors' && e.request.url.slice(-4) === '.ico') return caches.match('/favicon.png');
 				})
 		})
 		.catch(error => console.log(error));
@@ -39,6 +41,7 @@ const cacheFiles = [
 	'/app.js?v=1.1',
 	'/css.css?v.1.1',
 	'/manifest.webmanifest?v1.1',
+	'/favicon.png',
 	'/a.jpg',
 	'/c.jpg',
 	'/d.jpg'
