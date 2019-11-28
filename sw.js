@@ -2,10 +2,9 @@
 const cacheCleaning = () => {
 	return caches.keys()
 		.then(keyList => {
-			console.log(keyList);
-			return Promise.all(keyList.map(key => {
-				if (cacheId.indexOf(key) === -1) return caches.delete(key);
-			}));
+			const cachesDelete = keyList.map(key => (key !== cacheId) caches.delete(key));
+			console.log(cachesDelete);
+			return Promise.all(cachesDelete);
 		})
 		.catch(error => console.log(error));
 }
