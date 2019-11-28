@@ -3,7 +3,7 @@ const cacheCleaning = () => {
 	return caches.keys()
 		.then(keyList => {
 			return Promise.all(keyList.map(key => {
-				if (key !== cacheId) return caches.delete(key)
+				if (key !== cacheId) return caches.delete(key);
 			}));
 		})
 		.catch(error => console.log(error));
@@ -42,5 +42,8 @@ const cacheId = `${appName} - ${cacheVersion}`;
 // Events
 self.addEventListener('install', e => e.waitUntil(cacheOpenAdd(cacheId, cacheFiles)));
 self.addEventListener('activate', e => e.waitUntil(cacheCleaning()));
-if (navigator.onLine === true) return self.addEventListener('fetch', e => e.respondWith(cacheFileLookup(e)));
-caches.match('/offline.html');
+if (navigator.onLine === true) {
+	self.addEventListener('fetch', e => e.respondWith(cacheFileLookup(e)));
+} else {
+	caches.match('/offline.html');
+}
