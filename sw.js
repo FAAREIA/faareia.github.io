@@ -12,6 +12,8 @@ const cacheCleaning = () => {
 const cacheFileLookup = e => {
 	return caches.match(e.request)
 		.then(response => {
+			console.log(e);
+			console.log(e.request);
 			if (response) return response;
 			return fetch(e.request)
 				.catch(error => {
