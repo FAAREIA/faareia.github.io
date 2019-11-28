@@ -25,7 +25,7 @@ const cacheOpenAdd = (id, files) => {
 
 // Variables
 const appName = "faareia";
-const cacheVersion = 'v0.6';
+const cacheVersion = 'v0.7';
 const cacheFiles = [
 	'/offline.html',
 	'/app.js?v=1.1',
