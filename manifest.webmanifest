@@ -5,7 +5,7 @@
 	],
 	"description"				:	"Noticias del mundo en tiempo real.",
 	"dir"						:	"ltr",
-	"display"					:	"standalone",
+	"display"					:	"fullscreen",
 	"icons"						:	[
 		{
             "src": "icon-32.png",

@@ -18,7 +18,6 @@ const cacheFileLookup = e => {
 			return fetch(e.request)
 				.catch(error => {
 					if (e.request.mode === 'navigate') return caches.match('/offline.html');
-					else if (e.request.mode === 'no-cors' && e.request.url.slice(-4) === '.ico') return caches.match('/favicon.png');
 				})
 		})
 		.catch(error => console.log(error));
@@ -34,7 +33,7 @@ const cacheOpenAdd = (id, files) => {
 
 // Variables
 const appName = "faareia";
-const cacheVersion = 'v0.7';
+const cacheVersion = 'v1.0';
 const cacheFiles = [
 	'/offline.html',
 	'/app.js?v=1.1',
