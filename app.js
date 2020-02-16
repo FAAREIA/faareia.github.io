@@ -6,7 +6,9 @@ window.addEventListener('beforeinstallprompt', e => {
 	let savedEvent = e;
 
 	e.preventDefault();
+
 	hola.style.display = 'block';
+
 	hola.addEventListener('click', e => {
 		savedEvent.prompt();
 
