@@ -3,5 +3,5 @@ if ('serviceWorker' in navigator) {
 };
 
 alert("ontouchstart" in document.documentElement);
-alert("deviceorientation" in document.documentElement);
-alert(navigator.MaxTouchPoints);
+alert("deviceorientation" in window);
+alert(navigator.MaxTouchPoints > 0);
