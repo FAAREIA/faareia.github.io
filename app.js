@@ -16,7 +16,7 @@ if (!isPwa && !pwaInstallMsgShown) {
 		const browser = (isIos) ? 'safari' : 'firefox';
 		const text = (lang === 'en') ? 'To install our App, click on the icon:' : 'Para instalar nuestra App, haga click en el ícono:';
 
-		const div = `<div>${text} <img alt="${imgAlt}" src="/themes/custom/faareia/img/app-install-${browser}.svg" /></div>`;
+		const div = `<div>${text} <img alt="${alt}" src="/themes/custom/faareia/img/app-install-${browser}.svg" /></div>`;
 
 		//XXXXXXXXXXXXXXXXX.insertAdjacentHTML('beforeend', div);
 		alert(div);
