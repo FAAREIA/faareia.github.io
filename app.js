@@ -9,7 +9,8 @@ if (!isPwa && !pwaInstallMsgShown) {
 	const mobileScreen = window.matchMedia('(max-width: 69em)').matches;
 
 	if (isIos || isFirefox && mobileScreen) {
-		const lang = header.querySelector('li.is-active').getAttribute('hreflang');
+		//const lang = header.querySelector('li.is-active').getAttribute('hreflang');
+		const lang = 'es';
 
 		const alt = (lang === 'en') ? 'Install our App' : 'Instale nuestra App';
 		const browser = (isIos) ? 'safari' : 'firefox';
